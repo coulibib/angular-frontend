@@ -2,13 +2,15 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email Id</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngfor = "let employe for enmployes">
+        <tr *ngFor = "let employe of employes">
+            
             <td>{{ employe.firstName }}</td>
             <td>{{ employe.lastName }}</td>
             <td>{{ employe.emailId }}</td>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employe } from '../employe'
+import { EmployeService } from '../employe.service';
 
 
 @Component({
@@ -9,24 +10,18 @@ import { Employe } from '../employe'
 })
 export class EnmployeListComponent implements OnInit {
 
-  employes: Employe[] | undefined;
+  employes!: Employe[];
 
-  constructor() { }
+  constructor(private employeService: EmployeService) { }
 
   ngOnInit(): void {
-    this.employes = [{
-      "id": 1,
-      "firstName": "ibra",
-      "lastName": "coul",
-      "emailId": "coulibra4@gmail.com"
-    },
-    {
-      "id": 2,
-      "firstName":"aba",
-      "lastName": "samake",
-      "emailId": "aba123@gmail.com"
-    }
-  ];
+    this.getEmployes();
+  }
+  
+  private getEmployes(){
+      this.employeService.getEmployeList().subscribe(data => {
+      this.employes = data;
+    })
   }
 
 }
